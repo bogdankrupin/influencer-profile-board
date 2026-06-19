@@ -11,8 +11,9 @@ guessing.
 4. Notable work & links
 5. Trajectory
 6. Highlights / interesting facts
-7. Sources
-8. Optional — LLM-visibility read
+7. AI-search visibility (optional — only with SE Ranking data)
+8. Sources
+9. Optional — LLM-visibility read (heuristic)
 
 ---
 
@@ -57,13 +58,25 @@ strongest 4–8.
   distinctive POV, a surprising background detail)
 - Each should be sourced; nothing private, nothing that reads as a dig
 
-## 7. Sources
+## 7. AI-search visibility *(optional — only when SE Ranking data is available)*
+Live data on how the subject shows up when users ask AI about them. Populated
+from `references/se-ranking-ai-search.md`; omit the whole section if SE Ranking
+isn't available or returned nothing.
+- **Engines covered** — chips for engines with data (ChatGPT, Google AI
+  Overviews, AI Mode, …)
+- **Share of mentions** — per-engine, how often the subject is mentioned
+- **Citation / link presence** — shown separately from mentions (not the same thing)
+- **What people ask** — a handful of real prompts where the subject appears
+- **(Optional) Standing** — one-line leaderboard takeaway vs peers
+- **Provenance** — "Source: SE Ranking AI-search, as of [date]"
+
+## 8. Sources
 - The links the board was built from, grouped loosely (official vs press/third-party)
 - This section is required — it makes the board auditable
 
 ---
 
-## 8. Optional — LLM-visibility read
+## 9. Optional — LLM-visibility read (heuristic)
 Include only if the user wants the "how does an LLM see this person" angle.
 Five dimensions, each a short score (e.g. a 0–100 or Low/Med/High) plus a
 one-line rationale:

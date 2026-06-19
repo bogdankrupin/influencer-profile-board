@@ -45,8 +45,9 @@ Top to bottom:
 6. **Trajectory** — a short, dated timeline or 2–3 bullets.
 7. **Highlights / interesting facts** — a clean list, each item a sentence.
 8. **LLM-visibility read** (if included) — five labeled rows, each with a small score pill (use `--ok`/`--accent`/`--warn` by level) and a one-line rationale. A segmented bar per dimension works well.
-9. **Sources** — compact list of outbound links, grouped official vs other.
-10. **Footer** — "Built from public information on [date]. Not affiliated with or endorsed by [name]."
+9. **AI-search visibility** (only if SE Ranking data was pulled) — engine chips for the engines with data; a small per-engine bar for share of mentions with citation/link presence shown separately; a short list of real "what people ask AI" prompts; an optional one-line peer-standing note. Label the block *Source: SE Ranking AI-search, as of [date]* so its provenance is visibly distinct from the web-search content. Omit the block entirely if no data.
+10. **Sources** — compact list of outbound links, grouped official vs other.
+11. **Footer** — "Built from public information on [date]. Not affiliated with or endorsed by [name]."
 
 ## Interaction (keep it lightweight, vanilla JS)
 At least one genuinely useful interaction, e.g.:
