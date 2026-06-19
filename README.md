@@ -37,7 +37,9 @@ Ask Claude about a creator, expert, founder, or public personality — *"tell me
 - **Public-signal sweep** — targeted web searches for identity, contact/channels, expertise, notable work, trajectory, and standout facts.
 - **Footprint calibration** — a rich board for well-documented figures, an honest compact one for thin/emerging presences (no padding).
 - **Interactive board render** — a self-contained HTML file with topic filters, copy buttons, and section nav.
-- **Optional LLM-visibility read** — a five-dimension score (Identity, Topic Association, Trust/Corroboration, Freshness & Trajectory, Risk) describing how legible the person is to a model.
+- **Live AI-search visibility (optional)** — when the **SE Ranking** connector/API is available, enrich the board with real data on how the person shows up when users ask about them in **ChatGPT** and **Google AI Overviews / AI Mode**.
+- **Graceful fallback** — if SE Ranking isn't connected, or its credits run out, the skill drops just that section and builds the standard web-search board. SE Ranking is never required for a result.
+- **Optional LLM-visibility read** — a five-dimension heuristic score (Identity, Topic Association, Trust/Corroboration, Freshness & Trajectory, Risk) describing how legible the person is to a model.
 - **Sourcing & privacy discipline** — public info only, corroborated, dated, with a sources list.
 
 ## Who it's for, and the tasks it handles
@@ -70,11 +72,21 @@ You don't have to name the skill — Claude triggers it from the task. Its first
 
 1. **Pin down the subject** — name + niche/handle; resolve same-name collisions; stop if there's no real public presence.
 2. **Gather public signals** — several targeted web searches to fill every section, preferring primary/official sources and corroborating non-official claims.
-3. **Structure the data** — into the board schema; calibrate richness to the footprint; add a name-note where confusion is likely.
-4. **(Optional) LLM-visibility read** — the five-dimension score, included only when useful or requested.
-5. **Render the board** — one self-contained interactive HTML file, ending with sources and an "as of" date.
+3. **(Optional) Live AI-search via SE Ranking** — if the connector is available, pull how the person shows up in ChatGPT and Google AI Overviews / AI Mode (mentions, citations, the prompts people ask). Skips cleanly if SE Ranking is absent or out of credits.
+4. **Structure the data** — into the board schema; calibrate richness to the footprint; add a name-note where confusion is likely.
+5. **(Optional) LLM-visibility read** — the five-dimension heuristic score, included only when useful or requested.
+6. **Render the board** — one self-contained interactive HTML file, ending with sources and an "as of" date.
 
-Full detail lives in [`influencer-profile-board/SKILL.md`](influencer-profile-board/SKILL.md), with the section schema in `references/board-spec.md` and the layout/design tokens in `references/board-template.md`.
+Full detail lives in [`influencer-profile-board/SKILL.md`](influencer-profile-board/SKILL.md), with the section schema in `references/board-spec.md`, the layout/design tokens in `references/board-template.md`, and the SE Ranking enrichment steps in `references/se-ranking-ai-search.md`.
+
+### Two modes, one output
+
+| | Web search only | + SE Ranking connected |
+|---|---|---|
+| Identity, contact, expertise, work, highlights | ✅ | ✅ |
+| Heuristic LLM-visibility read | ✅ (optional) | ✅ (optional) |
+| **Live AI-search visibility** (ChatGPT / AIO / AI Mode) | — | ✅ |
+| Behaviour when SE Ranking credits run out | n/a | falls back to web-search board |
 
 ## Privacy & safety
 
@@ -87,6 +99,7 @@ Full detail lives in [`influencer-profile-board/SKILL.md`](influencer-profile-bo
 
 1. A Claude plan with **Skills** support and **Code execution & file creation** enabled (Settings → Capabilities).
 2. The **web_search** tool available, so the skill can gather public signals.
+3. *(Optional)* The **SE Ranking** MCP connector or API, to unlock the live AI-search visibility section. Without it, the board is built from web search alone.
 
 ## Install (Claude.ai / Claude app)
 
@@ -110,7 +123,8 @@ influencer-profile-board-skill/
 │   ├── SKILL.md                         #   workflow + privacy rules
 │   └── references/
 │       ├── board-spec.md                #   section-by-section field schema
-│       └── board-template.md            #   layout, design tokens, interaction
+│       ├── board-template.md            #   layout, design tokens, interaction
+│       └── se-ranking-ai-search.md      #   optional live AI-search enrichment + fallback
 └── influencer-profile-board.skill       # prebuilt, installable package (also on Releases)
 ```
 
@@ -121,6 +135,7 @@ These steps are only needed if you want to modify the skill or repackage it — 
 **Customising it**
 - **Sections / fields:** edit `references/board-spec.md`.
 - **Look & interaction:** edit `references/board-template.md` (design tokens, layout, JS behaviors).
+- **Live AI-search layer:** edit `references/se-ranking-ai-search.md` (tool sequence, fields, fallback rules).
 - **Workflow / privacy rules:** edit `SKILL.md`.
 
 **Build the `.skill` from source**
