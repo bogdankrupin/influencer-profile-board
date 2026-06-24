@@ -34,8 +34,10 @@ Ask Claude about a creator, expert, founder, or public personality — *"tell me
 ## Functions
 
 - **Subject resolution** — pins down *which* person (handles look-alikes and same-name collisions) before researching.
-- **Public-signal sweep** — targeted web searches for identity, contact/channels, expertise, notable work, trajectory, and standout facts.
-- **Footprint calibration** — a rich board for well-documented figures, an honest compact one for thin/emerging presences (no padding).
+- **Public-signal sweep** — targeted web searches for identity, contact/channels, social presence, expertise, notable work, trajectory, and key facts.
+- **Social presence & audience size** — lists the platforms the person is active on with a follower/subscriber count per platform, shown as approximate and dated.
+- **Footprint calibration** — a fuller board for well-documented figures, a compact one for thin/emerging presences (no padding).
+- **Analytical tone** — neutral, factual presentation; no praise, hype, or emotional framing.
 - **Interactive board render** — a self-contained HTML file with topic filters, copy buttons, and section nav.
 - **Live AI-search visibility (optional)** — when the **SE Ranking** connector/API is available, enrich the board with real data on how the person shows up when users ask about them in **ChatGPT** and **Google AI Overviews / AI Mode**.
 - **Graceful fallback** — if SE Ranking isn't connected, or its credits run out, the skill drops just that section and builds the standard web-search board. SE Ranking is never required for a result.

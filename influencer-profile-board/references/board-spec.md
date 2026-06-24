@@ -7,13 +7,14 @@ guessing.
 ## Contents
 1. Header (identity)
 2. Contact & channels
-3. Expertise
-4. Notable work & links
-5. Trajectory
-6. Highlights / interesting facts
-7. AI-search visibility (optional — only with SE Ranking data)
-8. Sources
-9. Optional — LLM-visibility read (heuristic)
+3. Social presence & audience size
+4. Expertise
+5. Notable work & links
+6. Trajectory
+7. Key facts
+8. AI-search visibility (optional — only with SE Ranking data)
+9. Sources
+10. Optional — LLM-visibility read (heuristic)
 
 ---
 
@@ -35,30 +36,38 @@ guessing.
 - **Public business contact** — a "work with me", booking, or press link they publish for that purpose
 - (Never a private phone/email/home address — see privacy rules in SKILL.md)
 
-## 3. Expertise
+## 3. Social presence & audience size
+- **Per platform** — one row per active platform (LinkedIn, X/Twitter, YouTube, Instagram, TikTok, Facebook, Twitch, Substack, etc.)
+- For each: **platform · handle/link · follower or subscriber count · as-of date / source**
+- Counts are approximate point-in-time figures — label them "~" and dated; don't present a single stale number as exact
+- Omit a platform if no reliable count is available rather than guessing
+- Optional: a total/combined reach line, clearly marked as a sum of the figures shown
+
+## 4. Expertise
 - **Core topics** — 3–6 areas they're most tightly associated with
 - **Sub-themes** — narrower angles within those topics
 - **Formats** — how they show up (research, talks, courses, threads, video, OSS…)
-- A one-line note on what they're *the* person for, if there's a clear answer
+- A one-line note on what they're most associated with, if there's a clear answer
 
-## 4. Notable work & links
+## 5. Notable work & links
 For each item: a title, a one-line description, and the URL. Aim for the
 strongest 4–8.
 - Signature projects / products
 - Notable talks, books, podcasts, popular articles
 - Awards, recognitions, notable mentions
 
-## 5. Trajectory
+## 6. Trajectory
 - **Recent activity** — what they've shipped/posted lately (with rough dates)
-- **Direction** — where their focus seems to be heading
+- **Direction** — where their focus appears to be heading, stated from evidence
 - Keep this short and clearly time-stamped
 
-## 6. Highlights / interesting facts
-- 3–6 verifiable, memorable facts (origin story, a record, a famous moment, a
-  distinctive POV, a surprising background detail)
-- Each should be sourced; nothing private, nothing that reads as a dig
+## 7. Key facts
+- 3–6 verifiable, material facts (a documented project, a record/first, a stated
+  position, a relevant background detail)
+- State each plainly and attributively; each should be sourced
+- Nothing private, nothing speculative, nothing that reads as praise or a dig
 
-## 7. AI-search visibility *(optional — only when SE Ranking data is available)*
+## 8. AI-search visibility *(optional — only when SE Ranking data is available)*
 Live data on how the subject shows up when users ask AI about them. Populated
 from `references/se-ranking-ai-search.md`; omit the whole section if SE Ranking
 isn't available or returned nothing.
@@ -70,13 +79,13 @@ isn't available or returned nothing.
 - **(Optional) Standing** — one-line leaderboard takeaway vs peers
 - **Provenance** — "Source: SE Ranking AI-search, as of [date]"
 
-## 8. Sources
+## 9. Sources
 - The links the board was built from, grouped loosely (official vs press/third-party)
 - This section is required — it makes the board auditable
 
 ---
 
-## 9. Optional — LLM-visibility read (heuristic)
+## 10. Optional — LLM-visibility read (heuristic)
 Include only if the user wants the "how does an LLM see this person" angle.
 Five dimensions, each a short score (e.g. a 0–100 or Low/Med/High) plus a
 one-line rationale:

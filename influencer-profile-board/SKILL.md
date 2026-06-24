@@ -3,8 +3,9 @@ name: influencer-profile-board
 description: >-
   Build a rich, interactive single-file HTML profile board for any public
   figure, creator, or influencer in any niche. Pulls public information via web
-  search and structures it into identity & contact, areas of expertise, notable
-  work and links, highlights, and an optional LLM-visibility read. Use this
+  search and structures it into identity & contact, social presence + follower
+  counts, expertise, notable work and links, key facts, and an optional
+  LLM-visibility read. Use this
   skill whenever the user wants to profile, research, or "make a card / board /
   dossier" about a creator, influencer, expert, founder, athlete, or public
   personality — phrases like "tell me about [person]", "build a profile of
@@ -26,7 +27,7 @@ compatibility: >-
 
 # Influencer Profile Board
 
-Turn a person's public footprint into one polished, interactive HTML board: who they are, how to reach them, what they're known for, the links worth keeping, the standout facts, and — optionally — how legible they are to an LLM. The point of this skill is that the research questions, the board structure, and the privacy rules are settled in advance, so every profile comes out complete, accurate, and the same shape.
+Turn a person's public footprint into one interactive HTML board: who they are, how to reach them, their social presence and audience size, what they're known for, the relevant links, the key facts, and — optionally — how legible they are to an LLM. The point of this skill is that the research questions, the board structure, and the privacy rules are settled in advance, so every profile comes out complete, accurate, and the same shape.
 
 Everything in a board comes from **public** information and is **sourced**. This is a profile of a public footprint, not a background check.
 
@@ -46,10 +47,11 @@ Run several **targeted** searches rather than one broad one. Aim to fill every b
 
 1. **Identity & current role** — full name, current title(s)/company, location if public, one-line "what they do".
 2. **Official channels & contact** — personal site, the social profiles they actively run, newsletter, and any *publicly listed* business contact (e.g. a "work with me" / booking page). See privacy rules below.
-3. **Areas of expertise** — the topics they're most tightly associated with; what they're cited or invited to speak on.
-4. **Notable work & links** — signature projects, talks, books, podcasts, popular pieces, products, awards. Capture the actual URLs.
-5. **Trajectory & recent activity** — what they've shipped or posted lately; where their focus is heading.
-6. **Interesting / standout facts** — verifiable, noteworthy details that make the profile memorable (a famous project, an origin story, a record, a distinctive POV). Not gossip, not rumor, not anything private.
+3. **Social presence & audience size** — the platforms they're active on (LinkedIn, X/Twitter, YouTube, Instagram, TikTok, etc.) and the **follower/subscriber count per platform**. Treat counts as approximate point-in-time figures: capture the number, the platform, and where/when it was reported. Counts move constantly — date them and don't present a stale or single-source number as exact.
+4. **Areas of expertise** — the topics they're most tightly associated with; what they're cited or invited to speak on.
+5. **Notable work & links** — signature projects, talks, books, podcasts, popular pieces, products, awards. Capture the actual URLs.
+6. **Trajectory & recent activity** — what they've shipped or posted lately; where their focus is heading.
+7. **Key facts** — verifiable, material details about the subject's background or work (a notable project, a documented first/record, a stated position). State them plainly and sourced. Not gossip, not rumor, not anything private.
 
 Sourcing discipline:
 - Prefer **primary / official** sources (their own site, verified profiles, first-party bylines) over aggregators.
@@ -74,10 +76,10 @@ This is the enrichment layer. Do it only when SE Ranking is reachable; otherwise
 
 ## Step 4 — Structure the data
 
-Organize what you found into the board schema before rendering. The full section-by-section field list is in `references/board-spec.md` — read it so the board is complete and consistently shaped. At a glance the sections are: Header (identity), Contact & channels, Expertise, Notable work & links, Trajectory, Highlights / fun facts, **AI-search visibility** (only if Step 3 produced data), and Sources.
+Organize what you found into the board schema before rendering. The full section-by-section field list is in `references/board-spec.md` — read it so the board is complete and consistently shaped. At a glance the sections are: Header (identity), Contact & channels, **Social presence** (platforms + follower counts), Expertise, Notable work & links, Trajectory, Key facts, **AI-search visibility** (only if Step 3 produced data), and Sources.
 
 Two things to calibrate here:
-- **Match the footprint.** A well-documented public figure earns a rich board; someone with a thinner or emerging presence gets a compact one. Don't pad a sparse profile with filler or speculation — a short, honest board that notes "a focused / emerging public footprint" is the right output.
+- **Match the footprint.** A well-documented public figure supports a fuller board; a thinner or emerging presence yields a shorter one. Don't pad a sparse profile with filler or speculation — a short board that states "a focused / emerging public footprint" is the correct output.
 - **Disambiguate when names collide.** If a similarly-named person could be confused with the subject — especially someone in the same field or company — add a short name-note near the header (e.g. "not to be confused with X") and reflect it in the Risk dimension if you include the LLM-visibility read.
 
 ## Step 5 — (Optional) LLM-visibility read (heuristic)
@@ -91,6 +93,7 @@ Note this is a **heuristic** read — your qualitative judgment from the web evi
 Produce a **single self-contained HTML file** (all CSS/JS inline, images as data URIs or omitted) and save it to `/mnt/user-data/outputs/`. It should:
 
 - Open with a clean header: name, role, one-liner, location, and an "as of" date.
+- Include a **Social presence** block: each active platform with its follower/subscriber count, the handle/link, and the date/source of the figure. Show counts as approximate and dated; omit a platform if no reliable number is available rather than guessing.
 - Lay out the sections as scannable cards or tabs; make expertise and links easy to skim.
 - Be interactive in at least one useful way — e.g. tabbed/expandable sections, copy-link buttons, or filter chips for topics. Keep it lightweight; no external calls.
 - End with a **Sources** section listing the links the board was built from.
@@ -107,9 +110,19 @@ These keep the board appropriate and trustworthy:
 
 - **Public information only.** Use what the subject or reputable sources have already published. Do **not** include a home address, personal phone number, private email, exact location, family details, or anything else not clearly meant to be public — even if you can find it. Business/booking contacts that the person publishes for that purpose are fine.
 - **No sensitive inferences.** Don't assert or guess health, religion, sexual orientation, political affiliation, or similar, unless the person has clearly made it part of their public identity and it's relevant.
-- **Verifiable, not gossip.** "Interesting facts" must be sourced and noteworthy, not rumor or anything that reads as snark about a real person.
-- **Mark uncertainty and date it.** Flag anything unconfirmed; stamp the board with the date so stale numbers are obvious.
+- **Verifiable, not gossip.** "Key facts" must be sourced and material, not rumor or anything that reads as snark about a real person.
+- **Mark uncertainty and date it.** Flag anything unconfirmed; stamp the board with the date so stale numbers (including follower counts) are obvious.
 - **Sources, always.** Every board ends with the sources it was built from, so it's auditable.
+
+## Tone
+
+Write the board in an **analytical, neutral** register — it's a research brief, not a promotion.
+
+- State facts plainly and attributively; let the data carry the point. Prefer "has ~X followers on [platform] (as of [date])" over "an impressive following".
+- Avoid praise, hype, and evaluative adjectives (impressive, amazing, leading, guru, must-follow, influential) unless you're directly quoting a sourced description and labelling it as such.
+- No emotional or promotional framing, no exclamation marks. Describe, don't sell or flatter.
+- Quantify where possible (counts, dates, frequencies) instead of using subjective intensifiers.
+- This applies to all generated text in the board — headers, one-liners, facts, and any commentary.
 
 ## Language
 
